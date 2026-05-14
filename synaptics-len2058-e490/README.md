@@ -2,7 +2,18 @@
 
 **Subsystem:** `drivers/input/mouse/synaptics.c`  
 **Status:** Under review by Dmitry Torokhov  
-**Patch:** [lore.kernel.org](https://lore.kernel.org/linux-input/20260513045749.185969-1-contacto@bazaes.cl/)
+**Patch:** [lore.kernel.org](https://lore.kernel.org/linux-input/20260514013552.14234-1-contacto@bazaes.cl/)
+
+## Patch History
+
+- **v1** — Initial submission
+  [lore.kernel.org](https://lore.kernel.org/linux-input/20260513045749.185969-1-contacto@bazaes.cl/)
+
+- **v2** — Updated commit message after review by Dmitry Torokhov.
+  Clarified that `psmouse.synaptics_intertouch=1` is not ignored when
+  explicitly set — the passlist is only checked when the parameter is
+  unset. Also fixed `Assisted-by` tag format per kernel documentation.
+  [lore.kernel.org](https://lore.kernel.org/linux-input/20260514013552.14234-1-contacto@bazaes.cl/)
 
 ---
 
@@ -11,6 +22,7 @@
 The ThinkPad E490 touchpad (Synaptics TM3471-020, PNP ID: `LEN2058`) felt sluggish and unresponsive under Linux. Despite the hardware supporting RMI4 over SMBus — a richer protocol than PS/2 — the kernel was falling back to PS/2 mode silently.
 
 Symptoms:
+
 - Touchpad felt heavy and slow regardless of libinput acceleration settings
 - `libinput list-devices` showed no touchpad device at all
 - `sudo dmesg` revealed the kernel knew about a better bus but wasn't using it
